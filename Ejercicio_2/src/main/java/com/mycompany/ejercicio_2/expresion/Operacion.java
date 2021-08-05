@@ -76,9 +76,9 @@ public class Operacion extends Instruccion {
             return valueIzq * valueDer;
         } else {
             if (operador == Operador.MAS) {
-                
+
                 return valueIzq + valueDer;
-                
+
             }
         }
         return 0;
@@ -86,7 +86,8 @@ public class Operacion extends Instruccion {
 
     @Override
     public Nodo getNodo() {
-        Nodo nodo = new Nodo("Operacion");
+        //Nodo nodo = new Nodo("Operacion");
+        Nodo nodo = new Nodo(String.valueOf(operador));
         if (izq instanceof Operacion) {
             Operacion izqOp = (Operacion) izq;
             nodo.addHijoNodo(izqOp.getNodo());
@@ -94,7 +95,8 @@ public class Operacion extends Instruccion {
             Primitivo x = (Primitivo) izq;
             nodo.addHijoNodo(x.getNodo());
         }
-        nodo.addHijo(String.valueOf(operador));
+
+        //nodo.addHijo(String.valueOf(operador));
         if (der instanceof Operacion) {
             Operacion derOp = (Operacion) der;
             nodo.addHijoNodo(derOp.getNodo());

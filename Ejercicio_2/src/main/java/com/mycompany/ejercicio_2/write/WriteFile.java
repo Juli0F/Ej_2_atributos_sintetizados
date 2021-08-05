@@ -24,7 +24,7 @@ public class WriteFile {
 
             //Crear objeto FileWriter que sera el que nos ayude a escribir sobre archivo
             FileWriter escribir = new FileWriter(archivo);
-
+            System.out.println(archivo.getAbsoluteFile());
 
             //Escribimos en el archivo con el metodo write 
            
@@ -40,6 +40,7 @@ public class WriteFile {
             e.printStackTrace();
             System.out.println("Error al escribir");
         }
+        System.out.println(pathFinal);
         return pathFinal;
     }
      public void dibujar(String direccionDot, String direccionPng) {

@@ -41,8 +41,10 @@ public class Primitivo extends Instruccion{
     @Override
     public Nodo getNodo() {
         
-        Nodo nodo = new Nodo("Numero");
-        nodo.addHijo(String.valueOf(valor));
+        //Nodo nodo = new Nodo("Numero");
+        Nodo nodo = new Nodo(String.valueOf(valor));
+        
+        //nodo.addHijo(String.valueOf(valor));
         return nodo;
     }
 }
