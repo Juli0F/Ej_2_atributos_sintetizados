@@ -951,7 +951,7 @@ public List<GrammarException> getListaErroresLexicos(){
             // fall through
           case 11: break;
           case 3:
-            { System.out.println("entero");return new Symbol(sym.ID, yyline+1,yycolumn+1,Integer.parseInt(yytext()));
+            { return new Symbol(sym.ID, yyline+1,yycolumn+1,String.valueOf(yytext()));
             }
             // fall through
           case 12: break;

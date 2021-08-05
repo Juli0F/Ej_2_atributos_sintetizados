@@ -28,6 +28,8 @@ public class Tabla {
     public void setTabla(HashMap<String, Object> tabla) {
         this.tabla = tabla;
     }
-    
+    public boolean existKey(String key){
+        return tabla.containsKey(key);
+    }
    
 }

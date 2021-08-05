@@ -8,6 +8,7 @@ package com.mycompany.ejercicio_2.expresion;
 import com.mycompany.ejercicio_2.abs.Instruccion;
 import com.mycompany.ejercicio_2.abs.Nodo;
 import com.mycompany.ejercicio_2.ts.Arbol;
+import com.mycompany.ejercicio_2.ts.GrammarException;
 import com.mycompany.ejercicio_2.ts.Tabla;
 
 /**
@@ -22,10 +23,10 @@ public class Asignacion extends Instruccion{
     private int column;
 
     public Asignacion(String id, Object value,  int line, int column) {
+        super(line,column);
         this.value = value;
         this.id = id;
-        this.line = line;
-        this.column = column;
+        
     }
 
     public Object getValue() {
@@ -48,12 +49,21 @@ public class Asignacion extends Instruccion{
 
     @Override
     public Nodo getNodo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Nodo nodo = new Nodo("ASIGNACION");
+        nodo.addHijo(id);
+        System.out.println("Clase en asigancion: "+ value.getClass());
+        //nodo.addHijoNodo(t.getNodo());
+        return nodo;
     }
 
     @Override
     public Object interpretar(Tabla tabla, Arbol arbol) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (tabla.existKey(id)){
+            return (new GrammarException("Semantico","se esta duplicando id",super.getFila(),super.getColumna()));
+        }
+        tabla.getTabla().put(id, value);
+        return true;
+        
     }
     
            

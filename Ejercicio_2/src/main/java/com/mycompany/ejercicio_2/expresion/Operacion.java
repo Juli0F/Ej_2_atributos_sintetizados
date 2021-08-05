@@ -60,24 +60,30 @@ public class Operacion extends Instruccion {
 
         if (izq instanceof Operacion) {
             Operacion op = (Operacion) izq;
-            valueIzq = (Double) op.interpretar(tabla,arbol);
-            Principal.postFijo += " "+ valueIzq;
+            valueIzq = (Double) op.interpretar(tabla, arbol);
+            //Principal.postFijo += " " + valueIzq;
+        } else if (izq instanceof Identificador) {
+            valueIzq = isIdentificador(izq);
         } else {
             Primitivo op = (Primitivo) izq;
             valueIzq = (Double) op.interpretar(tabla, arbol);
-            Principal.postFijo += " "+ valueIzq;
+            
         }
+        Principal.postFijo += " " + valueIzq;
 
         if (der instanceof Operacion) {
             Operacion op = (Operacion) der;
             valueDer = (Double) op.interpretar(tabla, arbol);
-            Principal.postFijo += " "+ valueDer;
+
+        } else if (der instanceof Identificador) {
+            valueDer = isIdentificador(der);
         } else {
             Primitivo op = (Primitivo) der;
             valueDer = (Double) op.interpretar(tabla, arbol);
-            Principal.postFijo += " "+ valueDer;
+
         }
-        
+        Principal.postFijo += " " + valueDer;
+
         //Principal.postFijo += " "+ String.valueOf(operador);
         if (operador == Operador.POR) {
             Principal.postFijo += " (*)";
@@ -95,11 +101,15 @@ public class Operacion extends Instruccion {
     @Override
     public Nodo getNodo() {
         //Nodo nodo = new Nodo("Operacion");
-        
+
         Nodo nodo = new Nodo(String.valueOf(operador));
         if (izq instanceof Operacion) {
             Operacion izqOp = (Operacion) izq;
             nodo.addHijoNodo(izqOp.getNodo());
+        } else if (izq instanceof Identificador) {
+            Identificador x = (Identificador) izq;
+            nodo.addHijoNodo(x.getNodo());
+
         } else {
             Primitivo x = (Primitivo) izq;
             nodo.addHijoNodo(x.getNodo());
@@ -109,6 +119,10 @@ public class Operacion extends Instruccion {
         if (der instanceof Operacion) {
             Operacion derOp = (Operacion) der;
             nodo.addHijoNodo(derOp.getNodo());
+        } else if (der instanceof Identificador) {
+            Identificador x = (Identificador) der;
+            nodo.addHijoNodo(x.getNodo());
+
         } else {
             Primitivo x = (Primitivo) der;
             nodo.addHijoNodo(x.getNodo());
@@ -123,6 +137,18 @@ public class Operacion extends Instruccion {
 //         x = (Primitivo) der;
 //        //nodo.addHijoNodo(x.getNodo());
 //        return nodo;
+    }
+
+    private double isIdentificador(Object obj) {
+        if (Operador.MAS == operador) {
+            Identificador id = (Identificador) obj;
+            id.setValue(0);
+            return 0.0;
+        } else {
+            Identificador id = (Identificador) obj;
+            id.setValue(1);
+            return 1.0;
+        }
     }
 
 }
