@@ -41,7 +41,7 @@ public class Principal {
             //Nodo init = new Nodo("Ast_Root");
             
             //Nodo instNodo = new Nodo("Instruccion");
-            Nodo instNodo = new Nodo("Inicio");//"Resultado: "+resultado
+            Nodo instNodo = new Nodo("Inicio: "+resultado);//"Resultado: "+resultado
             instNodo.addHijoNodo(ast.getInstruccion().getNodo());
 
             //init.addHijoNodo(instNodo);

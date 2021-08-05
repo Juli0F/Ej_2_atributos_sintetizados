@@ -21,7 +21,7 @@ public class Operacion extends Instruccion {
     private Operador operador;
     private Object izq;
     private Object der;
-
+    private double result;
     public Operacion(Operador operador, Object izq, Object der, int fila, int columna) {
         super(fila, columna);
         this.operador = operador;
@@ -87,11 +87,11 @@ public class Operacion extends Instruccion {
         //Principal.postFijo += " "+ String.valueOf(operador);
         if (operador == Operador.POR) {
             Principal.postFijo += " (*)";
-            return valueIzq * valueDer;
+            return result =  valueIzq * valueDer;
         } else {
             if (operador == Operador.MAS) {
                 Principal.postFijo += " (+)";
-                return valueIzq + valueDer;
+                return result = valueIzq + valueDer;
 
             }
         }
@@ -102,7 +102,7 @@ public class Operacion extends Instruccion {
     public Nodo getNodo() {
         //Nodo nodo = new Nodo("Operacion");
 
-        Nodo nodo = new Nodo(String.valueOf(operador));
+        Nodo nodo = new Nodo(String.valueOf(operador)+ " "+ result);
         if (izq instanceof Operacion) {
             Operacion izqOp = (Operacion) izq;
             nodo.addHijoNodo(izqOp.getNodo());
