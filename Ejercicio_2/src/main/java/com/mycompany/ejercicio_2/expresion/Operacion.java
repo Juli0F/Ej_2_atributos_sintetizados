@@ -8,7 +8,9 @@ package com.mycompany.ejercicio_2.expresion;
 import com.mycompany.ejercicio_2.abs.Instruccion;
 import com.mycompany.ejercicio_2.abs.Nodo;
 import com.mycompany.ejercicio_2.principal.Principal;
+import com.mycompany.ejercicio_2.ts.Arbol;
 import com.mycompany.ejercicio_2.ts.Operador;
+import com.mycompany.ejercicio_2.ts.Tabla;
 
 /**
  *
@@ -52,37 +54,37 @@ public class Operacion extends Instruccion {
     }
 
     @Override
-    public Object interpretar() {
+    public Object interpretar(Tabla tabla, Arbol arbol) {
         Double valueIzq;
         Double valueDer;
 
         if (izq instanceof Operacion) {
             Operacion op = (Operacion) izq;
-            valueIzq = (Double) op.interpretar();
+            valueIzq = (Double) op.interpretar(tabla,arbol);
             Principal.postFijo += " "+ valueIzq;
         } else {
             Primitivo op = (Primitivo) izq;
-            valueIzq = (Double) op.interpretar();
+            valueIzq = (Double) op.interpretar(tabla, arbol);
             Principal.postFijo += " "+ valueIzq;
         }
 
         if (der instanceof Operacion) {
             Operacion op = (Operacion) der;
-            valueDer = (Double) op.interpretar();
+            valueDer = (Double) op.interpretar(tabla, arbol);
             Principal.postFijo += " "+ valueDer;
         } else {
             Primitivo op = (Primitivo) der;
-            valueDer = (Double) op.interpretar();
+            valueDer = (Double) op.interpretar(tabla, arbol);
             Principal.postFijo += " "+ valueDer;
         }
         
-        Principal.postFijo += " "+ String.valueOf(operador);
+        //Principal.postFijo += " "+ String.valueOf(operador);
         if (operador == Operador.POR) {
-
+            Principal.postFijo += " (*)";
             return valueIzq * valueDer;
         } else {
             if (operador == Operador.MAS) {
-
+                Principal.postFijo += " (+)";
                 return valueIzq + valueDer;
 
             }

@@ -10,6 +10,7 @@ import com.mycompany.ejercicio_2.abs.Nodo;
 import com.mycompany.ejercicio_2.analizador.Lexer;
 import com.mycompany.ejercicio_2.analizador.parser;
 import com.mycompany.ejercicio_2.ts.Arbol;
+import com.mycompany.ejercicio_2.ts.Tabla;
 import com.mycompany.ejercicio_2.write.WriteFile;
 import java.io.StringReader;
 import java.util.logging.Level;
@@ -31,8 +32,10 @@ public class Principal {
             
             Instruccion instruccion = (Instruccion) p.parse().value;
             
+            Tabla tabla = new Tabla();
             Arbol ast = new Arbol(instruccion, null, null);
-            resultado = new Double(String.valueOf(instruccion.interpretar()));
+            
+            resultado = new Double(String.valueOf(instruccion.interpretar(tabla, ast)));
             
 
             //Nodo init = new Nodo("Ast_Root");

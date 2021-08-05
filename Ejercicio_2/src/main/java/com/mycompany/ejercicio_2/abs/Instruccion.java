@@ -5,6 +5,9 @@
  */
 package com.mycompany.ejercicio_2.abs;
 
+import com.mycompany.ejercicio_2.ts.Arbol;
+import com.mycompany.ejercicio_2.ts.Tabla;
+
 
 
 /**
@@ -38,7 +41,7 @@ public abstract class Instruccion {
     
     
     
-    public abstract Object interpretar();
+    public abstract Object interpretar(Tabla tabla, Arbol arbol);
     public abstract Nodo getNodo();
     
 }

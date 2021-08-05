@@ -64,6 +64,8 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        lblResultado.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -174,13 +176,19 @@ public class Frame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Principal.postFijo = "PostFijo: ";
+       lblPost.setText("");
         Principal principal = new Principal();
         
-        if(!jTextField1.getText().isBlank())
+        if(!jTextField1.getText().isBlank()){
             lblResultado.setText("Resultado: "+principal.compilar(jTextField1.getText()));
+            lblPost.setText(Principal.postFijo.replace(".0", ""));
+        }
+        
+        
         
         redimensionar_imagenes(jScrollPane1.getWidth(), jScrollPane1.getHeight());
-        lblPost.setText(Principal.postFijo.replace(".0", ""));
+        //view();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -219,10 +227,10 @@ public class Frame extends javax.swing.JFrame {
         });
     }
 
-    public BufferedImage redimensionar_imagenes(int x, int y) {
+    public void redimensionar_imagenes(int x, int y) {
+        System.out.println("Cargando imagen");
         BufferedImage bi = null;
-            //se obtiene la imagen original
-            //BufferedImage decodificado = ImageIO.read(imagen);
+            
             ImageIcon pic = new ImageIcon("grafo.png");
 
             //se crea la nueva imagen con las dimensiones de interes
@@ -243,9 +251,30 @@ public class Frame extends javax.swing.JFrame {
 
             
 
-        return bi;
+
     }
 
+     public void view() {
+
+        try {
+
+            ImageIcon img = new ImageIcon("grafo.png"); 
+            
+            JLabel lbl = new JLabel(img, JLabel.CENTER);
+            lbl.setSize(jScrollPane1.getSize());
+
+            
+
+            jScrollPane1.setViewportView(lbl);
+            lbl.setVisible(true);
+            jScrollPane1.setVisible(true);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Error Al Cargar Imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

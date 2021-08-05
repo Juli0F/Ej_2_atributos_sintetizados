@@ -1,8 +1,0 @@
-digraph {
-n0[label="Inicio"];
-n1[label="MAS"]n0->n1;
-n2[label="4.0"]n1->n2;
-n3[label="POR"]n1->n3;
-n4[label="4.0"]n3->n4;
-n5[label="3.0"]n3->n5;
-}

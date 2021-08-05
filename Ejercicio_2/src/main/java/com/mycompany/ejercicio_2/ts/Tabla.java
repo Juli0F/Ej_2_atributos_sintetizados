@@ -14,6 +14,9 @@ import java.util.HashMap;
 public class Tabla {
    private  HashMap<String, Object> tabla;
 
+    public Tabla() {
+        this.tabla = new HashMap<>();
+    }
     public Tabla(HashMap<String, Object> tabla) {
         this.tabla = tabla;
     }

@@ -7,6 +7,8 @@ package com.mycompany.ejercicio_2.expresion;
 
 import com.mycompany.ejercicio_2.abs.Instruccion;
 import com.mycompany.ejercicio_2.abs.Nodo;
+import com.mycompany.ejercicio_2.ts.Arbol;
+import com.mycompany.ejercicio_2.ts.Tabla;
 
 
 /**
@@ -33,8 +35,7 @@ public class Primitivo extends Instruccion{
     }
 
     
-    @Override
-    public Object interpretar() {
+    public Object interpretar(Tabla tabla, Arbol arbol) {
         return this.valor;
     }
 

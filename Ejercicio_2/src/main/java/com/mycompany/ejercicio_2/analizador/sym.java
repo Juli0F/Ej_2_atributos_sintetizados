@@ -8,17 +8,25 @@ package com.mycompany.ejercicio_2.analizador;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int MULTIPLICACION = 4;
-  public static final int NUMERO = 2;
-  public static final int error = 1;
+  public static final int PAR_A = 7;
   public static final int SUMA = 3;
+  public static final int MULTIPLICACION = 4;
   public static final int EOF = 0;
+  public static final int NUMERO = 2;
+  public static final int ID = 5;
+  public static final int IGUAL = 6;
+  public static final int error = 1;
+  public static final int PAR_C = 8;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "NUMERO",
   "SUMA",
-  "MULTIPLICACION"
+  "MULTIPLICACION",
+  "ID",
+  "IGUAL",
+  "PAR_A",
+  "PAR_C"
   };
 }
 
