@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * @author julio
  */
 public class Principal {
-    static String postFijo;
+    public static String postFijo = "PostFijo: ";
     
     public double compilar(String cadena){
         double resultado = 0;

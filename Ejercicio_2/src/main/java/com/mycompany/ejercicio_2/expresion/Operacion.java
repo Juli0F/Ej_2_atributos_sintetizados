@@ -7,6 +7,7 @@ package com.mycompany.ejercicio_2.expresion;
 
 import com.mycompany.ejercicio_2.abs.Instruccion;
 import com.mycompany.ejercicio_2.abs.Nodo;
+import com.mycompany.ejercicio_2.principal.Principal;
 import com.mycompany.ejercicio_2.ts.Operador;
 
 /**
@@ -58,19 +59,24 @@ public class Operacion extends Instruccion {
         if (izq instanceof Operacion) {
             Operacion op = (Operacion) izq;
             valueIzq = (Double) op.interpretar();
+            Principal.postFijo += " "+ valueIzq;
         } else {
             Primitivo op = (Primitivo) izq;
             valueIzq = (Double) op.interpretar();
+            Principal.postFijo += " "+ valueIzq;
         }
 
         if (der instanceof Operacion) {
             Operacion op = (Operacion) der;
             valueDer = (Double) op.interpretar();
+            Principal.postFijo += " "+ valueDer;
         } else {
             Primitivo op = (Primitivo) der;
             valueDer = (Double) op.interpretar();
+            Principal.postFijo += " "+ valueDer;
         }
-
+        
+        Principal.postFijo += " "+ String.valueOf(operador);
         if (operador == Operador.POR) {
 
             return valueIzq * valueDer;
@@ -87,6 +93,7 @@ public class Operacion extends Instruccion {
     @Override
     public Nodo getNodo() {
         //Nodo nodo = new Nodo("Operacion");
+        
         Nodo nodo = new Nodo(String.valueOf(operador));
         if (izq instanceof Operacion) {
             Operacion izqOp = (Operacion) izq;

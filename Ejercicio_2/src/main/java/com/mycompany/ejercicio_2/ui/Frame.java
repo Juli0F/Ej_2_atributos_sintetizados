@@ -46,7 +46,7 @@ public class Frame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         lblResultado = new javax.swing.JLabel();
         panelPost = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblPost = new javax.swing.JLabel();
         paneImg = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
 
@@ -55,7 +55,6 @@ public class Frame extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "Expresion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Fira Code Medium", 0, 11), new java.awt.Color(153, 153, 153)))); // NOI18N
 
         jTextField1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jTextField1.setText("jTextField1");
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setText("OK");
@@ -91,8 +90,8 @@ public class Frame extends javax.swing.JFrame {
 
         panelPost.setBorder(javax.swing.BorderFactory.createTitledBorder("PostFijo"));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel1.setToolTipText("");
+        lblPost.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblPost.setToolTipText("");
 
         javax.swing.GroupLayout panelPostLayout = new javax.swing.GroupLayout(panelPost);
         panelPost.setLayout(panelPostLayout);
@@ -100,14 +99,14 @@ public class Frame extends javax.swing.JFrame {
             panelPostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPostLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(lblPost, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelPostLayout.setVerticalGroup(
             panelPostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPostLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPost, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -181,6 +180,7 @@ public class Frame extends javax.swing.JFrame {
             lblResultado.setText("Resultado: "+principal.compilar(jTextField1.getText()));
         
         redimensionar_imagenes(jScrollPane1.getWidth(), jScrollPane1.getHeight());
+        lblPost.setText(Principal.postFijo.replace(".0", ""));
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -249,11 +249,11 @@ public class Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblPost;
     private javax.swing.JLabel lblResultado;
     private javax.swing.JPanel paneImg;
     private javax.swing.JPanel panelPost;
